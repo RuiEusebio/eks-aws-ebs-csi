@@ -289,21 +289,22 @@ node:
     readOnlyRootFilesystem: true
     privileged: true
 
-storageClasses: []
+storageClasses:
 # Add StorageClass resources like:
-# - name: ebs-sc
-#   # annotation metadata
-#   annotations:
-#     storageclass.kubernetes.io/is-default-class: "true"
-#   # label metadata
-#   labels:
-#     my-label-is: supercool
-#   # defaults to WaitForFirstConsumer
-#   volumeBindingMode: WaitForFirstConsumer
-#   # defaults to Delete
-#   reclaimPolicy: Retain
-#   parameters:
-#     encrypted: "true"
+- name: gp2-retain-expandable
+  # annotation metadata
+  # annotations:
+  #   storageclass.kubernetes.io/is-default-class: "true"
+  # label metadata
+  labels:
+    my-label-is: supercool
+  # defaults to WaitForFirstConsumer
+  volumeBindingMode: WaitForFirstConsumer
+  # defaults to Delete
+  reclaimPolicy: Retain
+  allowVolumeExpansion: true
+  parameters:
+    encrypted: "true"
 
 volumeSnapshotClasses: []
 # Add VolumeSnapshotClass resources like:
